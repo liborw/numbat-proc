@@ -1,0 +1,7 @@
+[package]
+name = "numbat-proc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+numbat = "1.16.0"
