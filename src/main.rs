@@ -1,22 +1,22 @@
 
-use std::{env, fs};
+use std::{env, fs::File, io::{stdin, Read}};
 use numbat::Context;
 
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    if args.len() < 2 {
-        panic!("No enough arguments");
-    }
-
-    let file = args[1].clone();
-    let content = fs::read_to_string(&file).expect("Failed to load file");
+    let mut input = String::new();
+    if args.len() >= 2 {
+        let mut file = File::open(args[2].clone()).expect("Failed to open file");
+        file.read_to_string(&mut input).expect("Failed to load file");
+    } else {
+        stdin().read_to_string(&mut input).expect("Failed to read stdin");
+    };
 
     let mut context = Context::new_without_importer();
 
-
     let mut batch = vec![];
-    for line in content.lines() {
+    for line in input.lines() {
         if let Some(at) = line.find("#=") {
             let (expression, _) = line.split_at(at);
             batch.push(expression);

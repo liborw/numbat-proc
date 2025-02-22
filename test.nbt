@@ -1,8 +1,8 @@
 dimension Time
 unit second: Time
 
-10 second + 2 second #=
+10 second + 3 second #= 13 second
 10 + 3
 
 let a = 2 + 2
-a + 2 #=
+a + 2 #= 6
