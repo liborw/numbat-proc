@@ -4,4 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.96"
+clap = { version = "4.5.30", features = ["derive"] }
 numbat = "1.16.0"
